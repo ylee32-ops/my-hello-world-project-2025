@@ -1,9 +1,10 @@
 let charizard;
 let fireballs = [];
 let sprite;
-let bg; 
+let bg; // 背景圖
 
 function preload() {
+  // 先載入背景與角色圖片
   bg = loadImage('pokemon-1.png');
   sprite = loadImage('pokemon.png');
 }
@@ -15,11 +16,14 @@ function setup() {
 }
 
 function draw() {
+  // 🏞️ 顯示背景圖（鋪滿畫布）
   image(bg, width / 2, height / 2, width, height);
 
+  // 顯示角色與火焰
   charizard.update();
   charizard.display();
 
+  // 顯示火焰粒子
   for (let i = fireballs.length - 1; i >= 0; i--) {
     fireballs[i].update();
     fireballs[i].display();
@@ -28,6 +32,7 @@ function draw() {
     }
   }
 
+  // 能量條
   noStroke();
   fill(255, 80, 0);
   rect(20, 20, charizard.energy * 2, 10);
@@ -40,6 +45,7 @@ function mousePressed() {
   charizard.breatheFire();
 }
 
+// ------------------ CLASS Creature ------------------
 class Creature {
   constructor(x, y, img) {
     this.x = x;
@@ -61,7 +67,7 @@ class Creature {
     if (this.energy > 3) {
       for (let i = 0; i < this.firePower; i++) {
         fireballs.push(new Fire(
-          this.x - 70 + random(-5, 5), 
+          this.x - 70 + random(-5, 5),  // 👈 更靠左邊的噴火點
           this.y - 20 + random(-5, 5),
           random(8, 20),
           random(-8, -3),
@@ -73,6 +79,7 @@ class Creature {
   }
 }
 
+// ------------------ CLASS Fire ------------------
 class Fire {
   constructor(x, y, size, vx, vy) {
     this.x = x;
