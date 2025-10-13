@@ -7,4 +7,3 @@ This project visualizes a flowing wave pattern using HTML Canvas and an ES6 `cla
 - Class-based design for scalability
 - Soft gradient palette inspired by cool tones
 
-👉 [View on GitHub Pages](https://ylee32-ops.github.io/my-hello-world-project-2025/w5-assignment/)
